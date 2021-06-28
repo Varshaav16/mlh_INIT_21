@@ -16,6 +16,14 @@ def display_board(board):
 
 
 def play_game(board):
+
+  display_board(board)
+  game_is_still_going = True
+  current_player = "X"
+
+  while game_is_still_going:
+    handle_turn(board, current_player)
+
     display_board(board)
     game_is_still_going = True
     current_player = "X"
@@ -29,6 +37,7 @@ def play_game(board):
             print("Game Over!!")
 
         current_player = flip_turn(current_player)
+
 
 def handle_turn(board, current_player):
     position = int(input("Enter the grid number: ")) 
