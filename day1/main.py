@@ -6,12 +6,12 @@
 # flip_turn 
 # is_game_over -> is_win or is_tie
 
-board = {position: "-" for position in range(1, 10)}
 
 def is_valid_move(board, position):
     if position not in range(1, 10) or board[position] != "-":
         return False
     return True
+   
     
 def display_board(board):
     print()
@@ -32,10 +32,10 @@ def play_game(board):
 
         if is_game_over(board, current_player):
             game_is_still_going = False
-            print()
-
+            
         current_player = flip_turn(current_player)
 
+        
 def handle_turn(board, current_player):
     position = int(input("Enter the grid number: ")) 
     if is_valid_move(board, position):
@@ -43,7 +43,6 @@ def handle_turn(board, current_player):
     else:
         print("INVALID MOVE! \nTry again ")
         handle_turn(board, current_player)
-
 
 
 def is_game_over(board, current_player):
@@ -55,8 +54,10 @@ def is_game_over(board, current_player):
         print("Tie!")
     return any(game_over)
 
+
 def is_win(board, current_player):
     return check_rows(board, current_player) or check_columns(board, current_player) or check_diagonals(board, current_player)
+
 
 def check_rows(board, current_player):
     for i in range(1, 10, 3):
@@ -65,12 +66,14 @@ def check_rows(board, current_player):
             return True
     return False
 
+
 def check_columns(board, current_player):
     for i in range(1, 4):
         column = board[i] + board[i + 3] + board[i + 6] 
         if column == current_player * 3:
             return True
     return False
+
 
 def check_diagonals(board, current_player):
     left_diagonal = board[1] + board[5] + board[9]
@@ -92,5 +95,7 @@ def is_tie(board):
 def flip_turn(current_player):
     return "O" if current_player == "X" else "X"
 
+
+board = {position: "-" for position in range(1, 10)}
 play_game(board)
 
