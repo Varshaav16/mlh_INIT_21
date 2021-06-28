@@ -17,17 +17,10 @@ def display_board(board):
 
 def play_game(board):
 
-  display_board(board)
-  game_is_still_going = True
-  current_player = "X"
-
-  while game_is_still_going:
-    handle_turn(board, current_player)
-
     display_board(board)
     game_is_still_going = True
     current_player = "X"
-
+    
     while game_is_still_going:
         handle_turn(board, current_player)
         display_board(board)
